@@ -1,69 +1,112 @@
 import psutil
 
 
-dash = "{}".format("-"*70)
-def periodicity():
 #Текущая, минимальная, максимальная частота ЦП.
+def frequency_info():
+    res_frequency = {}
+    data = psutil.cpu_freq()
+    res_frequency.update(
+                            current_frequency=data.current,
+                            min_frequency=data.min, 
+                            max_frequency=data.max
+                            )
+    return res_frequency
+
+
+#Получение информации о памяти
+def memory_info():
+    res_memory = {}
+    data = psutil.disk_usage('/')
+    res_memory.update(general_memory=float(data.total/(1024**3)),
+    used_memory=float(data.used/(1024**3)),#Конвертирование памяти
+    free_memory=float(data.free/(1024**3)),#Конвертирование памяти
+    free_space=data.percent)
+    return res_memory
+
+
+#Получение информации о сети
+def network_info():
+    res_network = {}
+    data = psutil.net_io_counters()
+    res_network.update(
+                        sent_bytes=data.bytes_sent,
+                        received_bytes=data.bytes_recv,
+                        sent_packages=data.packets_sent,
+                        received_packages=data.packets_recv,
+                        errors_receiving=data.errin,
+                        errors_sending=data.errout,
+                        dropin_packages=data.dropin,
+                        dropout_packages=data.dropout
+                        )
+    return res_network
+
+
+#Получение информации о логических ЦП
+def poison_info():
+    res_poison = []
+    res_poison.append(psutil.cpu_count(logical=False))
+    return res_poison
+
+
+#Получение информации о батарее
+def power_info():
+    res_battery ={}
+    data = psutil.sensors_battery()
+    res_battery.update(battery_charge=data.percent)
+    return res_battery
+
+
+#Формирование, форматирование и вывод строк
+def show(fre=None,mem=None,net=None,poi=None,power=None):
+    frequency_template = (
+    "Текущая:{current_frequency} Мгц.\n"
+    "Минимальная: {min_frequency} Мгц.\n"
+    "Максимальная: {max_frequency} Мгц."
+    )
+    memory_template = (
+    "Общее количество памяти: {general_memory:.2f} GB.\n"
+    "Cвободное количество памяти: {used_memory:.2f} GB.\n"
+    "Используемое количество памяти {free_memory:.2f} GB. \n"
+    "Количество занятого пространства(в процентах): {free_space}."
+    )
+    network_template = (
+    "Количество отправленных байтов: {sent_bytes}.\n"
+    "Количество полученных байтов: {received_bytes}.\n"
+    "Количество отправленных пакетов: {sent_packages}.\n"
+    "Количество полученных пакетов: {received_packages}.\n"
+    "Общее количество ошибок при получении: {errors_receiving}.\n"
+    "Общее количество ошибок при отправке: {errors_sending}.\n"
+    "Общее количество входящик пакетов, которые были сброшены: {dropin_packages}.\n"
+    "Общее количество исходящик пакетов, которые были сброшены: {dropout_packages}."
+    )
+    battery_template = "Количество заряда батареи(в процентах): {battery_charge}."
+    poison_template = "Количество логических ЦП в системе: {0[0]}."
+    dash = "{}".format("-"*70)
+    print("\tТекущая, минимальная, максимальная частота:")
+    print(frequency_template.format(**fre))
     print(dash)
-    print("\tТекущая, минимальная, максимальная частота: ")
-    frequency = psutil.cpu_freq()
-    str_1 = "Текущая:{0[0]:>7} Мгц.\nМинимальная: {0[1]:} Мгц.\nМаксимальная: {0[2]} Мгц.".format(frequency)
-    print(str_1)
-periodicity()
-
-
-def memory():
-#Память
-    usage = psutil.disk_usage('/')
-    usage_1 = []
-    for el in usage:
-        if el > 100:
-            res =el/1024**3
-            usage_1.append(res)
-        else:
-            usage_1.append(el)
-
-    str_1 = "Общее количество памяти: {0[0]:.2f}GB.\nСвободное количество памяти: \
-{0[1]:.2f}GB.\nИспользуемое количество памяти: \
-{0[2]:.2f}GB.\nКоличество занятого пространства(в процентах): \
-{0[3]}.".format(usage_1)
+    print("\tОбщие характеристики памяти:")
+    print(memory_template.format(**mem))
     print(dash)
-    print("\tОбщая характеристика памяти:")
-    print(str_1)
-memory()
-
-
-def info_network():
-    network = psutil.net_io_counters()
-    str_1 = "Количество отправленных байтов: {0[0]}.\n\
-Количество полученных байтов: {0[1]}.\n\
-Количество отправленных пакетов: {0[2]}.\n\
-Количество полученных пакетов: {0[3]}.\n\
-Общее количество ошибок при получении: {0[4]}.\n\
-Общее количество ошибок при отправке: {0[5]}.\n\
-Общее количество входящик пакетов, которые были сброшены: {0[6]}.\n\
-Общее количество исходящик пакетов, которые были сброшены: {0[7]}.".format(network)
+    print("\tОбщие характеристики сети:")
+    print(network_template.format(**net))
     print(dash)
-    print("\tХарактеристика загруженности сети:")
-    print(str_1)
-info_network()
-
-
-def poison():
-    str_1 = "Количество логических ЦП в системе: {}.".format(psutil.cpu_count(logical=False))
+    print(battery_template.format(**power))
     print(dash)
-    print(str_1)
+    print(poison_template.format(poi))
     print(dash)
-poison()
 
 
-def power():
-    battery = psutil.sensors_battery()
-    str_1 = "Количество заряда батареи(в процентах): {}.".format(battery[0])
-    print(str_1)
-    print(dash)
-power()
+#Блок единого входа
+def main():
+    frequency_data = frequency_info()
+    memory_data = memory_info()
+    network_data = network_info()
+    poison_data = poison_info()
+    power_data = power_info()
+    show(fre=frequency_data,mem=memory_data,net=network_data,poi=poison_data,power=power_data)
 
 
-
-
+#Блок запуска
+if __name__ == "__main__":
+    main()
