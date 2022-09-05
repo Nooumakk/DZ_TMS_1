@@ -56,8 +56,16 @@ def power_info():
     return res_battery
 
 
+#Получение информации о процессах
+def proc_info():
+    proc_list = []
+    for proc in psutil.process_iter(['username', 'name', 'pid']):
+        proc_list.append(proc.info)
+    return proc_list
+
+    
 #Формирование, форматирование и вывод строк
-def show(fre=None,mem=None,net=None,poi=None,power=None):
+def show(fre=None,mem=None,net=None,poi=None,power=None,procs=None):
     frequency_template = (
     "Текущая:{current_frequency} Мгц.\n"
     "Минимальная: {min_frequency} Мгц.\n"
@@ -67,7 +75,7 @@ def show(fre=None,mem=None,net=None,poi=None,power=None):
     "Общее количество памяти: {general_memory:.2f} GB.\n"
     "Cвободное количество памяти: {used_memory:.2f} GB.\n"
     "Используемое количество памяти {free_memory:.2f} GB. \n"
-    "Количество занятого пространства(в процентах): {free_space}."
+    "Количество свободного пространства(в процентах): {free_space}."
     )
     network_template = (
     "Количество отправленных байтов: {sent_bytes}.\n"
@@ -81,6 +89,9 @@ def show(fre=None,mem=None,net=None,poi=None,power=None):
     )
     battery_template = "Количество заряда батареи(в процентах): {battery_charge}."
     poison_template = "Количество логических ЦП в системе: {0[0]}."
+    proc_template = "Номер процесса: {}. Пользователь: {}. Название процесса: {}."
+    number_proc = "Количество работающих процессов {}:"
+    quantity = len(procs)
     dash = "{}".format("-"*70)
     print("\tТекущая, минимальная, максимальная частота:")
     print(frequency_template.format(**fre))
@@ -95,8 +106,15 @@ def show(fre=None,mem=None,net=None,poi=None,power=None):
     print(dash)
     print(poison_template.format(poi))
     print(dash)
-
-
+    print("\tИнформация о работающих процессах:")
+    print(number_proc.format(quantity))
+    for el in procs: #Обращение к элементам списка, хранящего в себе словари, в которых содержится информация о процессах.
+        el_1 = el.get("pid")
+        el_2 = el.get("username")
+        el_3 = el.get("name")
+        print(proc_template.format(el_1, el_2, el_3))
+    
+     
 #Блок единого входа
 def main():
     frequency_data = frequency_info()
@@ -104,7 +122,8 @@ def main():
     network_data = network_info()
     poison_data = poison_info()
     power_data = power_info()
-    show(fre=frequency_data,mem=memory_data,net=network_data,poi=poison_data,power=power_data)
+    proc_data = proc_info()
+    show(fre=frequency_data,mem=memory_data,net=network_data,poi=poison_data,power=power_data,procs=proc_data)
 
 
 #Блок запуска
