@@ -89,10 +89,12 @@ def show(fre=None,mem=None,net=None,poi=None,power=None,procs=None):
     )
     battery_template = "Количество заряда батареи(в процентах): {battery_charge}."
     poison_template = "Количество логических ЦП в системе: {0[0]}."
-    proc_template = "Номер процесса: {}. Пользователь: {}. Название процесса: {}."
+    proc_template = "|{:^40}|{:^40}|{:^40}|"
     number_proc = "Количество работающих процессов {}:"
+    dash = "-"*71
     quantity = len(procs)
-    dash = "{}".format("-"*70)
+    tables = "-"*124
+    tables_1 = "|{:^40}|{:^40}|{:^40}|"
     print("\tТекущая, минимальная, максимальная частота:")
     print(frequency_template.format(**fre))
     print(dash)
@@ -108,11 +110,15 @@ def show(fre=None,mem=None,net=None,poi=None,power=None,procs=None):
     print(dash)
     print("\tИнформация о работающих процессах:")
     print(number_proc.format(quantity))
+    print(tables)
+    print(tables_1.format("Номер процесса","Пользователь","Название процесса"))
+    print(tables)
     for el in procs: #Обращение к элементам списка, хранящего в себе словари, в которых содержится информация о процессах.
         el_1 = el.get("pid")
         el_2 = el.get("username")
         el_3 = el.get("name")
         print(proc_template.format(el_1, el_2, el_3))
+    print(tables)
     
      
 #Блок единого входа
