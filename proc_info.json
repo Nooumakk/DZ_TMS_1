@@ -1,0 +1,1097 @@
+[
+ {
+  "pid": 1,
+  "username": "root",
+  "name": "systemd"
+ },
+ {
+  "pid": 2,
+  "username": "root",
+  "name": "kthreadd"
+ },
+ {
+  "pid": 3,
+  "username": "root",
+  "name": "rcu_gp"
+ },
+ {
+  "pid": 4,
+  "username": "root",
+  "name": "rcu_par_gp"
+ },
+ {
+  "pid": 5,
+  "username": "root",
+  "name": "netns"
+ },
+ {
+  "pid": 7,
+  "username": "root",
+  "name": "kworker/0:0H-events_highpri"
+ },
+ {
+  "pid": 10,
+  "username": "root",
+  "name": "mm_percpu_wq"
+ },
+ {
+  "pid": 11,
+  "username": "root",
+  "name": "rcu_tasks_rude_"
+ },
+ {
+  "pid": 12,
+  "username": "root",
+  "name": "rcu_tasks_trace"
+ },
+ {
+  "pid": 13,
+  "username": "root",
+  "name": "ksoftirqd/0"
+ },
+ {
+  "pid": 14,
+  "username": "root",
+  "name": "rcu_sched"
+ },
+ {
+  "pid": 15,
+  "username": "root",
+  "name": "migration/0"
+ },
+ {
+  "pid": 16,
+  "username": "root",
+  "name": "idle_inject/0"
+ },
+ {
+  "pid": 17,
+  "username": "root",
+  "name": "cpuhp/0"
+ },
+ {
+  "pid": 18,
+  "username": "root",
+  "name": "cpuhp/1"
+ },
+ {
+  "pid": 19,
+  "username": "root",
+  "name": "idle_inject/1"
+ },
+ {
+  "pid": 20,
+  "username": "root",
+  "name": "migration/1"
+ },
+ {
+  "pid": 21,
+  "username": "root",
+  "name": "ksoftirqd/1"
+ },
+ {
+  "pid": 23,
+  "username": "root",
+  "name": "kworker/1:0H-kblockd"
+ },
+ {
+  "pid": 24,
+  "username": "root",
+  "name": "kdevtmpfs"
+ },
+ {
+  "pid": 25,
+  "username": "root",
+  "name": "inet_frag_wq"
+ },
+ {
+  "pid": 26,
+  "username": "root",
+  "name": "kauditd"
+ },
+ {
+  "pid": 27,
+  "username": "root",
+  "name": "khungtaskd"
+ },
+ {
+  "pid": 28,
+  "username": "root",
+  "name": "oom_reaper"
+ },
+ {
+  "pid": 29,
+  "username": "root",
+  "name": "writeback"
+ },
+ {
+  "pid": 30,
+  "username": "root",
+  "name": "kcompactd0"
+ },
+ {
+  "pid": 31,
+  "username": "root",
+  "name": "ksmd"
+ },
+ {
+  "pid": 32,
+  "username": "root",
+  "name": "khugepaged"
+ },
+ {
+  "pid": 79,
+  "username": "root",
+  "name": "kintegrityd"
+ },
+ {
+  "pid": 80,
+  "username": "root",
+  "name": "kblockd"
+ },
+ {
+  "pid": 81,
+  "username": "root",
+  "name": "blkcg_punt_bio"
+ },
+ {
+  "pid": 82,
+  "username": "root",
+  "name": "tpm_dev_wq"
+ },
+ {
+  "pid": 83,
+  "username": "root",
+  "name": "ata_sff"
+ },
+ {
+  "pid": 84,
+  "username": "root",
+  "name": "md"
+ },
+ {
+  "pid": 85,
+  "username": "root",
+  "name": "edac-poller"
+ },
+ {
+  "pid": 86,
+  "username": "root",
+  "name": "devfreq_wq"
+ },
+ {
+  "pid": 87,
+  "username": "root",
+  "name": "watchdogd"
+ },
+ {
+  "pid": 89,
+  "username": "root",
+  "name": "kworker/0:1H-kblockd"
+ },
+ {
+  "pid": 91,
+  "username": "root",
+  "name": "kswapd0"
+ },
+ {
+  "pid": 92,
+  "username": "root",
+  "name": "ecryptfs-kthrea"
+ },
+ {
+  "pid": 94,
+  "username": "root",
+  "name": "kthrotld"
+ },
+ {
+  "pid": 95,
+  "username": "root",
+  "name": "acpi_thermal_pm"
+ },
+ {
+  "pid": 97,
+  "username": "root",
+  "name": "scsi_eh_0"
+ },
+ {
+  "pid": 98,
+  "username": "root",
+  "name": "scsi_tmf_0"
+ },
+ {
+  "pid": 99,
+  "username": "root",
+  "name": "scsi_eh_1"
+ },
+ {
+  "pid": 100,
+  "username": "root",
+  "name": "scsi_tmf_1"
+ },
+ {
+  "pid": 102,
+  "username": "root",
+  "name": "vfio-irqfd-clea"
+ },
+ {
+  "pid": 104,
+  "username": "root",
+  "name": "mld"
+ },
+ {
+  "pid": 105,
+  "username": "root",
+  "name": "ipv6_addrconf"
+ },
+ {
+  "pid": 109,
+  "username": "root",
+  "name": "kworker/1:1H-kblockd"
+ },
+ {
+  "pid": 117,
+  "username": "root",
+  "name": "kstrp"
+ },
+ {
+  "pid": 120,
+  "username": "root",
+  "name": "zswap-shrink"
+ },
+ {
+  "pid": 121,
+  "username": "root",
+  "name": "kworker/u5:0"
+ },
+ {
+  "pid": 126,
+  "username": "root",
+  "name": "charger_manager"
+ },
+ {
+  "pid": 173,
+  "username": "root",
+  "name": "scsi_eh_2"
+ },
+ {
+  "pid": 174,
+  "username": "root",
+  "name": "scsi_tmf_2"
+ },
+ {
+  "pid": 201,
+  "username": "root",
+  "name": "jbd2/sda3-8"
+ },
+ {
+  "pid": 202,
+  "username": "root",
+  "name": "ext4-rsv-conver"
+ },
+ {
+  "pid": 278,
+  "username": "root",
+  "name": "ipmi-msghandler"
+ },
+ {
+  "pid": 289,
+  "username": "root",
+  "name": "systemd-udevd"
+ },
+ {
+  "pid": 291,
+  "username": "root",
+  "name": "ttm_swap"
+ },
+ {
+  "pid": 292,
+  "username": "root",
+  "name": "irq/18-vmwgfx"
+ },
+ {
+  "pid": 293,
+  "username": "root",
+  "name": "card0-crtc0"
+ },
+ {
+  "pid": 294,
+  "username": "root",
+  "name": "card0-crtc1"
+ },
+ {
+  "pid": 295,
+  "username": "root",
+  "name": "card0-crtc2"
+ },
+ {
+  "pid": 296,
+  "username": "root",
+  "name": "card0-crtc3"
+ },
+ {
+  "pid": 297,
+  "username": "root",
+  "name": "card0-crtc4"
+ },
+ {
+  "pid": 298,
+  "username": "root",
+  "name": "card0-crtc5"
+ },
+ {
+  "pid": 299,
+  "username": "root",
+  "name": "card0-crtc6"
+ },
+ {
+  "pid": 300,
+  "username": "root",
+  "name": "card0-crtc7"
+ },
+ {
+  "pid": 345,
+  "username": "root",
+  "name": "cryptd"
+ },
+ {
+  "pid": 497,
+  "username": "systemd-oom",
+  "name": "systemd-oomd"
+ },
+ {
+  "pid": 498,
+  "username": "systemd-resolve",
+  "name": "systemd-resolved"
+ },
+ {
+  "pid": 632,
+  "username": "root",
+  "name": "accounts-daemon"
+ },
+ {
+  "pid": 633,
+  "username": "root",
+  "name": "acpid"
+ },
+ {
+  "pid": 635,
+  "username": "avahi",
+  "name": "avahi-daemon"
+ },
+ {
+  "pid": 636,
+  "username": "root",
+  "name": "cron"
+ },
+ {
+  "pid": 639,
+  "username": "messagebus",
+  "name": "dbus-daemon"
+ },
+ {
+  "pid": 640,
+  "username": "root",
+  "name": "NetworkManager"
+ },
+ {
+  "pid": 645,
+  "username": "root",
+  "name": "irqbalance"
+ },
+ {
+  "pid": 646,
+  "username": "root",
+  "name": "networkd-dispat"
+ },
+ {
+  "pid": 653,
+  "username": "root",
+  "name": "polkitd"
+ },
+ {
+  "pid": 654,
+  "username": "root",
+  "name": "power-profiles-daemon"
+ },
+ {
+  "pid": 658,
+  "username": "syslog",
+  "name": "rsyslogd"
+ },
+ {
+  "pid": 667,
+  "username": "root",
+  "name": "switcheroo-control"
+ },
+ {
+  "pid": 677,
+  "username": "root",
+  "name": "systemd-logind"
+ },
+ {
+  "pid": 682,
+  "username": "root",
+  "name": "udisksd"
+ },
+ {
+  "pid": 686,
+  "username": "root",
+  "name": "wpa_supplicant"
+ },
+ {
+  "pid": 696,
+  "username": "avahi",
+  "name": "avahi-daemon"
+ },
+ {
+  "pid": 719,
+  "username": "root",
+  "name": "ModemManager"
+ },
+ {
+  "pid": 758,
+  "username": "root",
+  "name": "unattended-upgr"
+ },
+ {
+  "pid": 761,
+  "username": "root",
+  "name": "gdm3"
+ },
+ {
+  "pid": 772,
+  "username": "root",
+  "name": "gdm-session-worker"
+ },
+ {
+  "pid": 809,
+  "username": "ubuntu",
+  "name": "systemd"
+ },
+ {
+  "pid": 833,
+  "username": "kernoops",
+  "name": "kerneloops"
+ },
+ {
+  "pid": 843,
+  "username": "kernoops",
+  "name": "kerneloops"
+ },
+ {
+  "pid": 851,
+  "username": "ubuntu",
+  "name": "(sd-pam)"
+ },
+ {
+  "pid": 870,
+  "username": "ubuntu",
+  "name": "pipewire"
+ },
+ {
+  "pid": 872,
+  "username": "ubuntu",
+  "name": "pipewire-media-session"
+ },
+ {
+  "pid": 873,
+  "username": "ubuntu",
+  "name": "pulseaudio"
+ },
+ {
+  "pid": 883,
+  "username": "ubuntu",
+  "name": "gnome-keyring-daemon"
+ },
+ {
+  "pid": 890,
+  "username": "ubuntu",
+  "name": "gdm-wayland-session"
+ },
+ {
+  "pid": 892,
+  "username": "ubuntu",
+  "name": "dbus-daemon"
+ },
+ {
+  "pid": 902,
+  "username": "ubuntu",
+  "name": "gnome-session-binary"
+ },
+ {
+  "pid": 906,
+  "username": "ubuntu",
+  "name": "xdg-document-portal"
+ },
+ {
+  "pid": 907,
+  "username": "ubuntu",
+  "name": "gvfsd"
+ },
+ {
+  "pid": 916,
+  "username": "ubuntu",
+  "name": "xdg-permission-store"
+ },
+ {
+  "pid": 925,
+  "username": "ubuntu",
+  "name": "fusermount3"
+ },
+ {
+  "pid": 930,
+  "username": "ubuntu",
+  "name": "gvfsd-fuse"
+ },
+ {
+  "pid": 981,
+  "username": "ubuntu",
+  "name": "gnome-session-ctl"
+ },
+ {
+  "pid": 994,
+  "username": "ubuntu",
+  "name": "gnome-session-binary"
+ },
+ {
+  "pid": 1020,
+  "username": "ubuntu",
+  "name": "gnome-shell"
+ },
+ {
+  "pid": 1024,
+  "username": "ubuntu",
+  "name": "at-spi-bus-launcher"
+ },
+ {
+  "pid": 1030,
+  "username": "ubuntu",
+  "name": "dbus-daemon"
+ },
+ {
+  "pid": 1087,
+  "username": "ubuntu",
+  "name": "snapd-desktop-integration"
+ },
+ {
+  "pid": 1151,
+  "username": "ubuntu",
+  "name": "xdg-desktop-portal"
+ },
+ {
+  "pid": 1155,
+  "username": "ubuntu",
+  "name": "xdg-desktop-portal-gnome"
+ },
+ {
+  "pid": 1157,
+  "username": "ubuntu",
+  "name": "gnome-shell-calendar-server"
+ },
+ {
+  "pid": 1168,
+  "username": "ubuntu",
+  "name": "evolution-source-registry"
+ },
+ {
+  "pid": 1172,
+  "username": "root",
+  "name": "upowerd"
+ },
+ {
+  "pid": 1176,
+  "username": "ubuntu",
+  "name": "goa-daemon"
+ },
+ {
+  "pid": 1180,
+  "username": "ubuntu",
+  "name": "dconf-service"
+ },
+ {
+  "pid": 1184,
+  "username": "ubuntu",
+  "name": "gvfsd-metadata"
+ },
+ {
+  "pid": 1193,
+  "username": "ubuntu",
+  "name": "evolution-calendar-factory"
+ },
+ {
+  "pid": 1194,
+  "username": "ubuntu",
+  "name": "gvfs-udisks2-volume-monitor"
+ },
+ {
+  "pid": 1204,
+  "username": "ubuntu",
+  "name": "gvfs-afc-volume-monitor"
+ },
+ {
+  "pid": 1209,
+  "username": "ubuntu",
+  "name": "gvfs-gphoto2-volume-monitor"
+ },
+ {
+  "pid": 1221,
+  "username": "ubuntu",
+  "name": "goa-identity-service"
+ },
+ {
+  "pid": 1222,
+  "username": "ubuntu",
+  "name": "gvfs-goa-volume-monitor"
+ },
+ {
+  "pid": 1227,
+  "username": "ubuntu",
+  "name": "gvfs-mtp-volume-monitor"
+ },
+ {
+  "pid": 1237,
+  "username": "ubuntu",
+  "name": "evolution-addressbook-factory"
+ },
+ {
+  "pid": 1257,
+  "username": "root",
+  "name": "packagekitd"
+ },
+ {
+  "pid": 1271,
+  "username": "ubuntu",
+  "name": "gvfsd-trash"
+ },
+ {
+  "pid": 1282,
+  "username": "ubuntu",
+  "name": "at-spi2-registryd"
+ },
+ {
+  "pid": 1284,
+  "username": "ubuntu",
+  "name": "gjs"
+ },
+ {
+  "pid": 1293,
+  "username": "ubuntu",
+  "name": "sh"
+ },
+ {
+  "pid": 1294,
+  "username": "ubuntu",
+  "name": "gsd-a11y-settings"
+ },
+ {
+  "pid": 1295,
+  "username": "ubuntu",
+  "name": "gsd-color"
+ },
+ {
+  "pid": 1297,
+  "username": "ubuntu",
+  "name": "gsd-datetime"
+ },
+ {
+  "pid": 1298,
+  "username": "ubuntu",
+  "name": "gsd-housekeeping"
+ },
+ {
+  "pid": 1300,
+  "username": "ubuntu",
+  "name": "ibus-daemon"
+ },
+ {
+  "pid": 1305,
+  "username": "ubuntu",
+  "name": "gsd-keyboard"
+ },
+ {
+  "pid": 1306,
+  "username": "ubuntu",
+  "name": "gsd-media-keys"
+ },
+ {
+  "pid": 1307,
+  "username": "ubuntu",
+  "name": "gsd-power"
+ },
+ {
+  "pid": 1308,
+  "username": "ubuntu",
+  "name": "gsd-print-notifications"
+ },
+ {
+  "pid": 1325,
+  "username": "ubuntu",
+  "name": "gsd-rfkill"
+ },
+ {
+  "pid": 1326,
+  "username": "ubuntu",
+  "name": "gsd-screensaver-proxy"
+ },
+ {
+  "pid": 1327,
+  "username": "ubuntu",
+  "name": "gsd-sharing"
+ },
+ {
+  "pid": 1343,
+  "username": "ubuntu",
+  "name": "gsd-smartcard"
+ },
+ {
+  "pid": 1344,
+  "username": "ubuntu",
+  "name": "gsd-sound"
+ },
+ {
+  "pid": 1345,
+  "username": "ubuntu",
+  "name": "gsd-wacom"
+ },
+ {
+  "pid": 1356,
+  "username": "ubuntu",
+  "name": "ibus-dconf"
+ },
+ {
+  "pid": 1361,
+  "username": "ubuntu",
+  "name": "ibus-extension-gtk3"
+ },
+ {
+  "pid": 1375,
+  "username": "ubuntu",
+  "name": "gsd-printer"
+ },
+ {
+  "pid": 1386,
+  "username": "ubuntu",
+  "name": "ibus-portal"
+ },
+ {
+  "pid": 1392,
+  "username": "ubuntu",
+  "name": "gsd-disk-utility-notify"
+ },
+ {
+  "pid": 1408,
+  "username": "ubuntu",
+  "name": "evolution-alarm-notify"
+ },
+ {
+  "pid": 1443,
+  "username": "ubuntu",
+  "name": "snap-store"
+ },
+ {
+  "pid": 1471,
+  "username": "ubuntu",
+  "name": "ibus-engine-simple"
+ },
+ {
+  "pid": 1564,
+  "username": "ubuntu",
+  "name": "xdg-desktop-portal-gtk"
+ },
+ {
+  "pid": 1574,
+  "username": "colord",
+  "name": "colord"
+ },
+ {
+  "pid": 1581,
+  "username": "ubuntu",
+  "name": "tracker-miner-fs-3"
+ },
+ {
+  "pid": 1606,
+  "username": "ubuntu",
+  "name": "gjs"
+ },
+ {
+  "pid": 2166,
+  "username": "ubuntu",
+  "name": "Xwayland"
+ },
+ {
+  "pid": 2170,
+  "username": "ubuntu",
+  "name": "gsd-xsettings"
+ },
+ {
+  "pid": 2194,
+  "username": "ubuntu",
+  "name": "ibus-x11"
+ },
+ {
+  "pid": 2507,
+  "username": "ubuntu",
+  "name": "gvfsd-network"
+ },
+ {
+  "pid": 2520,
+  "username": "ubuntu",
+  "name": "gvfsd-dnssd"
+ },
+ {
+  "pid": 2594,
+  "username": "ubuntu",
+  "name": "update-notifier"
+ },
+ {
+  "pid": 8226,
+  "username": "ubuntu",
+  "name": "gvfsd-recent"
+ },
+ {
+  "pid": 8817,
+  "username": "ubuntu",
+  "name": "telegram-desktop"
+ },
+ {
+  "pid": 11915,
+  "username": "ubuntu",
+  "name": "snap"
+ },
+ {
+  "pid": 16389,
+  "username": "ubuntu",
+  "name": "chrome_crashpad_handler"
+ },
+ {
+  "pid": 20648,
+  "username": "ubuntu",
+  "name": "python3"
+ },
+ {
+  "pid": 20744,
+  "username": "ubuntu",
+  "name": "gvfsd-http"
+ },
+ {
+  "pid": 35264,
+  "username": "ubuntu",
+  "name": "obexd"
+ },
+ {
+  "pid": 56521,
+  "username": "ubuntu",
+  "name": "ssh-agent"
+ },
+ {
+  "pid": 141955,
+  "username": "root",
+  "name": "cupsd"
+ },
+ {
+  "pid": 141956,
+  "username": "root",
+  "name": "cups-browsed"
+ },
+ {
+  "pid": 164885,
+  "username": "root",
+  "name": "snapd"
+ },
+ {
+  "pid": 164929,
+  "username": "root",
+  "name": "systemd-journald"
+ },
+ {
+  "pid": 165005,
+  "username": "systemd-timesync",
+  "name": "systemd-timesyncd"
+ },
+ {
+  "pid": 169791,
+  "username": "ubuntu",
+  "name": "gjs"
+ },
+ {
+  "pid": 169927,
+  "username": "ubuntu",
+  "name": "gvfsd-google"
+ },
+ {
+  "pid": 171016,
+  "username": "root",
+  "name": "kworker/0:0-events"
+ },
+ {
+  "pid": 171099,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 171105,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 171106,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 171108,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 171121,
+  "username": "ubuntu",
+  "name": "chrome_crashpad_handler"
+ },
+ {
+  "pid": 171159,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 171175,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 171221,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 171234,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 171258,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 172373,
+  "username": "root",
+  "name": "kworker/1:1-events"
+ },
+ {
+  "pid": 174323,
+  "username": "root",
+  "name": "kworker/u4:0-events_unbound"
+ },
+ {
+  "pid": 174946,
+  "username": "root",
+  "name": "kworker/u4:3-events_freezable_power_"
+ },
+ {
+  "pid": 175369,
+  "username": "root",
+  "name": "kworker/0:3-cgroup_destroy"
+ },
+ {
+  "pid": 175392,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 175405,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 175443,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 175459,
+  "username": "ubuntu",
+  "name": "code"
+ },
+ {
+  "pid": 175472,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175474,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175483,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175529,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175531,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175550,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175556,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175605,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175751,
+  "username": "ubuntu",
+  "name": "bash"
+ },
+ {
+  "pid": 175997,
+  "username": "root",
+  "name": "kworker/u4:2-events_unbound"
+ },
+ {
+  "pid": 176079,
+  "username": "ubuntu",
+  "name": "python"
+ },
+ {
+  "pid": 179657,
+  "username": "root",
+  "name": "kworker/1:2-events"
+ },
+ {
+  "pid": 179848,
+  "username": "root",
+  "name": "kworker/u4:1-events_unbound"
+ },
+ {
+  "pid": 180214,
+  "username": "root",
+  "name": "kworker/1:0-events"
+ },
+ {
+  "pid": 180284,
+  "username": "ubuntu",
+  "name": "tracker-extract-3"
+ },
+ {
+  "pid": 180292,
+  "username": "ubuntu",
+  "name": "python"
+ }
+]

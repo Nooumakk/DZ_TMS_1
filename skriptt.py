@@ -1,4 +1,9 @@
 import psutil
+import json
+
+
+
+System_info = [] # Глобальный список для сбора информации
 
 
 #Текущая, минимальная, максимальная частота ЦП.
@@ -13,18 +18,32 @@ def frequency_info():
     return res_frequency
 
 
+def info_dec(a): # Декаратор для сбора информации
+    def executor():
+        res = a() # Сохранение информации в виде словаря
+        System_info.append(res) # Добавление словаря в глобальный список
+        json.dump(System_info, open("frequency_info.json", "w"), indent=1) # Создание файла .json, сохранение информации из словаря
+        return res
+    return executor
+
+exe = info_dec(frequency_info)
+exe()
+
+
 #Получение информации о памяти
+@info_dec
 def memory_info():
     res_memory = {}
     data = psutil.disk_usage('/')
     res_memory.update(general_memory=float(data.total/(1024**3)),
-    used_memory=float(data.used/(1024**3)),#Конвертирование памяти
-    free_memory=float(data.free/(1024**3)),#Конвертирование памяти
+    used_memory=float(data.used/(1024**3)), # Конвертирование памяти
+    free_memory=float(data.free/(1024**3)), # Конвертирование памяти
     free_space=data.percent)
     return res_memory
 
 
 #Получение информации о сети
+@info_dec
 def network_info():
     res_network = {}
     data = psutil.net_io_counters()
@@ -49,6 +68,7 @@ def poison_info():
 
 
 #Получение информации о батарее
+@info_dec
 def power_info():
     res_battery ={}
     data = psutil.sensors_battery()
@@ -62,6 +82,17 @@ def proc_info():
     for proc in psutil.process_iter(['username', 'name', 'pid']):
         proc_list.append(proc.info)
     return proc_list
+
+
+def info_dec(a): # Декаратор для сбора информации о процессах
+    def executor():
+        res = a() # Сохранение информации в виде словаря
+        json.dump(res, open("proc_info.json", "w"), indent=1) # Создание файла .json, сохранение информации из словаря
+        return res
+    return executor
+
+exe = info_dec(proc_info)
+exe()
 
     
 #Формирование, форматирование и вывод строк
