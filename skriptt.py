@@ -2,11 +2,20 @@ import psutil
 import json
 
 
+def info_dec(name_file): #Получение имени файла
+    def _executor(func):
+        def executor():
+            res = func()
+            json.dump(res, open(name_file, "w"), indent=1) # Создание файла .json с присвоением имени
+            return res
 
-System_info = [] # Глобальный список для сбора информации
+        return executor
+
+    return _executor
 
 
 #Текущая, минимальная, максимальная частота ЦП.
+@info_dec("frequency_info.json")
 def frequency_info():
     res_frequency = {}
     data = psutil.cpu_freq()
@@ -18,20 +27,8 @@ def frequency_info():
     return res_frequency
 
 
-def info_dec(a): # Декаратор для сбора информации
-    def executor():
-        res = a() # Сохранение информации в виде словаря
-        System_info.append(res) # Добавление словаря в глобальный список
-        json.dump(System_info, open("frequency_info.json", "w"), indent=1) # Создание файла .json, сохранение информации из словаря
-        return res
-    return executor
-
-exe = info_dec(frequency_info)
-exe()
-
-
 #Получение информации о памяти
-@info_dec
+@info_dec("memory_info.json")
 def memory_info():
     res_memory = {}
     data = psutil.disk_usage('/')
@@ -43,7 +40,7 @@ def memory_info():
 
 
 #Получение информации о сети
-@info_dec
+@info_dec("network_info.json")
 def network_info():
     res_network = {}
     data = psutil.net_io_counters()
@@ -68,7 +65,7 @@ def poison_info():
 
 
 #Получение информации о батарее
-@info_dec
+@info_dec("battery_info.json")
 def power_info():
     res_battery ={}
     data = psutil.sensors_battery()
@@ -77,22 +74,12 @@ def power_info():
 
 
 #Получение информации о процессах
+@info_dec("proc_info.json")
 def proc_info():
     proc_list = []
     for proc in psutil.process_iter(['username', 'name', 'pid']):
         proc_list.append(proc.info)
     return proc_list
-
-
-def info_dec(a): # Декаратор для сбора информации о процессах
-    def executor():
-        res = a() # Сохранение информации в виде словаря
-        json.dump(res, open("proc_info.json", "w"), indent=1) # Создание файла .json, сохранение информации из словаря
-        return res
-    return executor
-
-exe = info_dec(proc_info)
-exe()
 
     
 #Формирование, форматирование и вывод строк

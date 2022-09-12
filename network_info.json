@@ -1,0 +1,10 @@
+{
+ "sent_bytes": 636567568,
+ "received_bytes": 1661646236,
+ "sent_packages": 842008,
+ "received_packages": 1253943,
+ "errors_receiving": 0,
+ "errors_sending": 0,
+ "dropin_packages": 0,
+ "dropout_packages": 0
+}

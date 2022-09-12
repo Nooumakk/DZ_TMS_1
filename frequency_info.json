@@ -1,26 +1,5 @@
-[
- {
-  "current_frequency": 2419.2,
-  "min_frequency": 0.0,
-  "max_frequency": 0.0
- },
- {
-  "general_memory": 19.022079467773438,
-  "used_memory": 13.23251724243164,
-  "free_memory": 4.79913330078125,
-  "free_space": 73.4
- },
- {
-  "sent_bytes": 624491918,
-  "received_bytes": 1634066434,
-  "sent_packages": 813153,
-  "received_packages": 1217726,
-  "errors_receiving": 0,
-  "errors_sending": 0,
-  "dropin_packages": 0,
-  "dropout_packages": 0
- },
- {
-  "battery_charge": 50.0
- }
-]
+{
+ "current_frequency": 2419.2,
+ "min_frequency": 0.0,
+ "max_frequency": 0.0
+}
