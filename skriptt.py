@@ -1,137 +1,149 @@
 import psutil
 
 
-#Текущая, минимальная, максимальная частота ЦП.
-def frequency_info():
-    res_frequency = {}
-    data = psutil.cpu_freq()
-    res_frequency.update(
+class Frequency:
+    def get_data(self):# Получение информации о частоте 
+        self.frequency_data = {}
+        data = psutil.cpu_freq()
+        self.frequency_data.update(
                             current_frequency=data.current,
                             min_frequency=data.min, 
                             max_frequency=data.max
                             )
-    return res_frequency
-
-
-#Получение информации о памяти
-def memory_info():
-    res_memory = {}
-    data = psutil.disk_usage('/')
-    res_memory.update(general_memory=float(data.total/(1024**3)),
-    used_memory=float(data.used/(1024**3)),#Конвертирование памяти
-    free_memory=float(data.free/(1024**3)),#Конвертирование памяти
-    free_space=data.percent)
-    return res_memory
-
-
-#Получение информации о сети
-def network_info():
-    res_network = {}
-    data = psutil.net_io_counters()
-    res_network.update(
-                        sent_bytes=data.bytes_sent,
-                        received_bytes=data.bytes_recv,
-                        sent_packages=data.packets_sent,
-                        received_packages=data.packets_recv,
-                        errors_receiving=data.errin,
-                        errors_sending=data.errout,
-                        dropin_packages=data.dropin,
-                        dropout_packages=data.dropout
-                        )
-    return res_network
-
-
-#Получение информации о логических ЦП
-def poison_info():
-    res_poison = []
-    res_poison.append(psutil.cpu_count(logical=False))
-    return res_poison
-
-
-#Получение информации о батарее
-def power_info():
-    res_battery ={}
-    data = psutil.sensors_battery()
-    res_battery.update(battery_charge=data.percent)
-    return res_battery
-
-
-#Получение информации о процессах
-def proc_info():
-    proc_list = []
-    for proc in psutil.process_iter(['username', 'name', 'pid']):
-        proc_list.append(proc.info)
-    return proc_list
-
+        return self.frequency_data
     
-#Формирование, форматирование и вывод строк
-def show(fre=None,mem=None,net=None,poi=None,power=None,procs=None):
-    frequency_template = (
-    "Текущая:{current_frequency} Мгц.\n"
-    "Минимальная: {min_frequency} Мгц.\n"
-    "Максимальная: {max_frequency} Мгц."
-    )
-    memory_template = (
-    "Общее количество памяти: {general_memory:.2f} GB.\n"
-    "Cвободное количество памяти: {used_memory:.2f} GB.\n"
-    "Используемое количество памяти {free_memory:.2f} GB. \n"
-    "Количество свободного пространства(в процентах): {free_space}."
-    )
-    network_template = (
-    "Количество отправленных байтов: {sent_bytes}.\n"
-    "Количество полученных байтов: {received_bytes}.\n"
-    "Количество отправленных пакетов: {sent_packages}.\n"
-    "Количество полученных пакетов: {received_packages}.\n"
-    "Общее количество ошибок при получении: {errors_receiving}.\n"
-    "Общее количество ошибок при отправке: {errors_sending}.\n"
-    "Общее количество входящик пакетов, которые были сброшены: {dropin_packages}.\n"
-    "Общее количество исходящик пакетов, которые были сброшены: {dropout_packages}."
-    )
-    battery_template = "Количество заряда батареи(в процентах): {battery_charge}."
-    poison_template = "Количество логических ЦП в системе: {0[0]}."
-    proc_template = "|{:^40}|{:^40}|{:^40}|"
-    number_proc = "Количество работающих процессов {}:"
-    dash = "-"*71
-    quantity = len(procs)
-    tables = "-"*124
-    tables_1 = "|{:^40}|{:^40}|{:^40}|"
-    print("\tТекущая, минимальная, максимальная частота:")
-    print(frequency_template.format(**fre))
-    print(dash)
-    print("\tОбщие характеристики памяти:")
-    print(memory_template.format(**mem))
-    print(dash)
-    print("\tОбщие характеристики сети:")
-    print(network_template.format(**net))
-    print(dash)
-    print(battery_template.format(**power))
-    print(dash)
-    print(poison_template.format(poi))
-    print(dash)
-    print("\tИнформация о работающих процессах:")
-    print(number_proc.format(quantity))
-    print(tables)
-    print(tables_1.format("Номер процесса","Пользователь","Название процесса"))
-    print(tables)
-    for el in procs: #Обращение к элементам списка, хранящего в себе словари, в которых содержится информация о процессах.
-        el_1 = el.get("pid")
-        el_2 = el.get("username")
-        el_3 = el.get("name")
-        print(proc_template.format(el_1, el_2, el_3))
-    print(tables)
+    def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
+        frequency_template = (
+                                "Текущая частота:{current_frequency} Мгц.\n"
+                                "Минимальная частота: {min_frequency} Мгц.\n"
+                                "Максимальная частота: {max_frequency} Мгц."
+                                )
+        res = frequency_template.format(**self.frequency_data)
+        return res
+
+class Memory:
+    def get_data(self):# Получение информации о памяти
+        self.res_memory = {}
+        data = psutil.disk_usage('/')
+        self.res_memory.update(general_memory=float(data.total/(1024**3)),
+                                used_memory=float(data.used/(1024**3)),
+                                free_memory=float(data.free/(1024**3)),
+                                free_space=data.percent
+                                )
+        return self.res_memory
     
-     
-#Блок единого входа
-def main():
-    frequency_data = frequency_info()
-    memory_data = memory_info()
-    network_data = network_info()
-    poison_data = poison_info()
-    power_data = power_info()
-    proc_data = proc_info()
-    show(fre=frequency_data,mem=memory_data,net=network_data,poi=poison_data,power=power_data,procs=proc_data)
+    def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
+        memory_template = (
+                            "Общее количество памяти: {general_memory:.2f} GB.\n"
+                            "Cвободное количество памяти: {used_memory:.2f} GB.\n"
+                            "Используемое количество памяти {free_memory:.2f} GB. \n"
+                            "Количество свободного пространства(в процентах): {free_space}."
+                            )
+        res = memory_template.format(**self.res_memory)
+        return res
 
+class Network:# Получение информации о сети
+    def get_data(self):
+        self.res_network = {}
+        data = psutil.net_io_counters()
+        self.res_network.update(
+                            sent_bytes=data.bytes_sent,
+                            received_bytes=data.bytes_recv,
+                            sent_packages=data.packets_sent,
+                            received_packages=data.packets_recv,
+                            errors_receiving=data.errin,
+                            errors_sending=data.errout,
+                            dropin_packages=data.dropin,
+                            dropout_packages=data.dropout
+                            )
+        return self.res_network
+    
+    def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
+            network_template = (
+                                "Количество отправленных байтов: {sent_bytes}.\n"
+                                "Количество полученных байтов: {received_bytes}.\n"
+                                "Количество отправленных пакетов: {sent_packages}.\n"
+                                "Количество полученных пакетов: {received_packages}.\n"
+                                "Общее количество ошибок при получении: {errors_receiving}.\n"
+                                "Общее количество ошибок при отправке: {errors_sending}.\n"
+                                "Общее количество входящик пакетов, которые были сброшены: {dropin_packages}.\n"
+                                "Общее количество исходящик пакетов, которые были сброшены: {dropout_packages}."
+                                )
+            res = network_template.format(**self.res_network)
+            return res
 
-#Блок запуска
-if __name__ == "__main__":
+class Power:# Получение информации о кол-ве логических ЦП
+    def get_data(self):
+        self.res_battery ={}
+        data = psutil.sensors_battery()
+        self.res_battery.update(battery_charge=data.percent)
+        return self.res_battery
+    
+    def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
+            battery_template = "Количество заряда батареи(в процентах): {battery_charge}."
+            res = battery_template.format(**self.res_battery)
+
+            return res
+
+class Proc:# Получение информации о работающих процессах
+    def get_data(self):
+        # self.proc_list = []
+        self.res = []
+        proc_template = "|{pid:^40}|{username:^40}|{name:^40}|"# Формат строки для каждого процесса
+        hat_template = "|{:^40}|{:^40}|{:^40}|"# Формат строки для шапки таблицы
+        tables = "-"*124
+        hat = hat_template.format("Номер процесса","Пользователь","Название процесса")
+        self.res.append(tables)
+        self.res.append(hat)
+        self.res.append(tables)
+        for proc in psutil.process_iter(['username', 'name', 'pid']):
+            # self.proc_list.append(proc_template.format(**proc.info))
+            self.res.append(proc_template.format(**proc.info))# Добавление отформатированной информации в результирующий список
+        self.res.append(tables)
+        return self.res
+    
+    def __iter__(self):# Присвоение возможности итерирования
+        self.cursor = 0# Создание курсора для дальнейшего перебора
+        return self
+    
+    def __next__ (self):# Присвоение возможности итерирования
+        if self.cursor < len(self.proc_list):
+            try:
+                return self.proc_list[self.cursor]
+            finally:
+                self.cursor += 1
+        else:
+            raise StopIteration
+
+class Poison:# Получение информации о состоянии батареи
+    def get_data(self):
+        self.res_poison = []
+        self.res_poison.append(psutil.cpu_count(logical=False))
+        return self.res_poison
+    
+    def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
+            poison_template = "Количество логических ЦП в системе: {0[0]}."
+            res = poison_template.format(str(self.res_poison[0]))
+            return res
+
+def main(): # Блок запуска всех объектов
+    fre = Frequency()
+    fre.get_data()
+    print(fre)
+    mem = Memory()
+    mem.get_data()
+    print(mem)
+    net = Network()
+    net.get_data()
+    print(net)
+    pow = Power()
+    pow.get_data()
+    print(pow)
+    proc = Proc()
+    proc.get_data()
+    for el in proc.res:# Перебор и печать всех работающих процессов
+        print(el)
+        
+
+if __name__ == "__main__":# Точка входа
     main()
