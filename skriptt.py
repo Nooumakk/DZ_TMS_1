@@ -1,16 +1,21 @@
 import psutil
+from abc import ABC, abstractmethod
 
+class BaseStr(ABC):
+    info_data = {}# Словарь для дальнейшей записи и работы с поступившей информацией
+    
+    @abstractmethod
+    def get_data(self):
+        ...
 
-class Frequency:
+class Frequency(BaseStr):
     def get_data(self):# Получение информации о частоте 
-        self.frequency_data = {}
         data = psutil.cpu_freq()
-        self.frequency_data.update(
+        self.info_data.update(
                             current_frequency=data.current,
                             min_frequency=data.min, 
                             max_frequency=data.max
                             )
-        return self.frequency_data
     
     def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
         frequency_template = (
@@ -18,19 +23,17 @@ class Frequency:
                                 "Минимальная частота: {min_frequency} Мгц.\n"
                                 "Максимальная частота: {max_frequency} Мгц."
                                 )
-        res = frequency_template.format(**self.frequency_data)
+        res = frequency_template.format(**self.info_data)
         return res
 
-class Memory:
+class Memory(BaseStr):
     def get_data(self):# Получение информации о памяти
-        self.res_memory = {}
         data = psutil.disk_usage('/')
-        self.res_memory.update(general_memory=float(data.total/(1024**3)),
+        self.info_data.update(general_memory=float(data.total/(1024**3)),
                                 used_memory=float(data.used/(1024**3)),
                                 free_memory=float(data.free/(1024**3)),
                                 free_space=data.percent
                                 )
-        return self.res_memory
     
     def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
         memory_template = (
@@ -39,14 +42,13 @@ class Memory:
                             "Используемое количество памяти {free_memory:.2f} GB. \n"
                             "Количество свободного пространства(в процентах): {free_space}."
                             )
-        res = memory_template.format(**self.res_memory)
+        res = memory_template.format(**self.info_data)
         return res
 
-class Network:# Получение информации о сети
+class Network(BaseStr):# Получение информации о сети
     def get_data(self):
-        self.res_network = {}
         data = psutil.net_io_counters()
-        self.res_network.update(
+        self.info_data.update(
                             sent_bytes=data.bytes_sent,
                             received_bytes=data.bytes_recv,
                             sent_packages=data.packets_sent,
@@ -56,33 +58,29 @@ class Network:# Получение информации о сети
                             dropin_packages=data.dropin,
                             dropout_packages=data.dropout
                             )
-        return self.res_network
     
     def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
-            network_template = (
-                                "Количество отправленных байтов: {sent_bytes}.\n"
-                                "Количество полученных байтов: {received_bytes}.\n"
-                                "Количество отправленных пакетов: {sent_packages}.\n"
-                                "Количество полученных пакетов: {received_packages}.\n"
-                                "Общее количество ошибок при получении: {errors_receiving}.\n"
-                                "Общее количество ошибок при отправке: {errors_sending}.\n"
-                                "Общее количество входящик пакетов, которые были сброшены: {dropin_packages}.\n"
-                                "Общее количество исходящик пакетов, которые были сброшены: {dropout_packages}."
-                                )
-            res = network_template.format(**self.res_network)
-            return res
+        network_template = (
+                            "Количество отправленных байтов: {sent_bytes}.\n"
+                            "Количество полученных байтов: {received_bytes}.\n"
+                            "Количество отправленных пакетов: {sent_packages}.\n"
+                            "Количество полученных пакетов: {received_packages}.\n"
+                            "Общее количество ошибок при получении: {errors_receiving}.\n"
+                            "Общее количество ошибок при отправке: {errors_sending}.\n"
+                            "Общее количество входящик пакетов, которые были сброшены: {dropin_packages}.\n"
+                            "Общее количество исходящик пакетов, которые были сброшены: {dropout_packages}."
+                            )
+        res = network_template.format(**self.info_data)
+        return res
 
-class Power:# Получение информации о кол-ве логических ЦП
+class Power(BaseStr):# Получение информации о состоянии батареи
     def get_data(self):
-        self.res_battery ={}
         data = psutil.sensors_battery()
-        self.res_battery.update(battery_charge=data.percent)
-        return self.res_battery
+        self.info_data.update(battery_charge=data.percent)
     
     def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
             battery_template = "Количество заряда батареи(в процентах): {battery_charge}."
-            res = battery_template.format(**self.res_battery)
-
+            res = battery_template.format(**self.info_data)
             return res
 
 class Proc:# Получение информации о работающих процессах
@@ -115,11 +113,10 @@ class Proc:# Получение информации о работающих п�
         else:
             raise StopIteration
 
-class Poison:# Получение информации о состоянии батареи
+class Poison:# Получение информации о кол-ве логических ЦП
     def get_data(self):
         self.res_poison = []
         self.res_poison.append(psutil.cpu_count(logical=False))
-        return self.res_poison
     
     def __str__(self):# Присвоение объекту возможность напечатать в отформатированном виде
             poison_template = "Количество логических ЦП в системе: {0[0]}."
